@@ -6,6 +6,8 @@ import uk.ac.nott.cs.g53dia.library.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import static java.lang.Math.ceil;
 import static uk.ac.nott.cs.g53dia.library.LitterAgent.RECHARGE_POINT_LOCATION;
 
@@ -21,6 +23,17 @@ public class CollectState extends State {
     }
 
 
+    public boolean shouldGoThere(Cell cell, Point previousDestination) {
+        LitterBin litterBin = (LitterBin) cell;
+        if (litterBin.getTask() != null) {
+            if (agent.getPosition().distanceTo(cell.getPoint()) < agent.getPosition().distanceTo(previousDestination)) {
+                return TRUE;
+            }
+        }
+        return FALSE;
+    }
+
+
     public Point closestLitter(ExploredMap exploredMap) {
 
         int currentWaste = agent.getWasteLevel();
@@ -33,30 +46,21 @@ public class CollectState extends State {
         Point position = agent.getPosition();
         Cell[][] view = exploredMap.getView(position, size);
         Point destination = new Point(99999999, 99999999);
-        LitterBin currentBin = null;
-
-
-
 
         for (Cell[] row : view) {
             for (Cell cell : row) {
                 if (currentWaste != 0 && currentRecycling == 0) {
                     if (cell instanceof WasteBin) {
-                        WasteBin wasteBin = (WasteBin) cell;
-                        if (wasteBin.getTask() != null /*&& currentCapacity >= wasteBin.getTask().getRemaining()*/) {
-                            if (agent.getPosition().distanceTo(cell.getPoint()) < agent.getPosition().distanceTo(destination)) {
-                                destination = cell.getPoint();
-                                currentBin = (LitterBin) cell;
-                            }
+                        if(shouldGoThere(cell, destination)) {
+                            destination = cell.getPoint();
                         }
                     }
                 } else if (currentWaste == 0 && currentRecycling != 0) {
                     if (cell instanceof RecyclingBin) {
-                        RecyclingBin recyclingBin = (RecyclingBin) cell;
-                        if (recyclingBin.getTask() != null /*&& currentCapacity >= recyclingBin.getTask().getRemaining()*/) {
-                            if (agent.getPosition().distanceTo(cell.getPoint()) < agent.getPosition().distanceTo(destination)) {
+                        RecyclingBin litterBin = (RecyclingBin) cell;
+                        if (litterBin.getTask() != null) {
+                            if(shouldGoThere(cell, destination)) {
                                 destination = cell.getPoint();
-                                currentBin = (LitterBin) cell;
                             }
                         }
                     }
@@ -64,9 +68,8 @@ public class CollectState extends State {
                     if (cell instanceof LitterBin) {
                         LitterBin litterBin = (LitterBin) cell;
                         if (litterBin.getTask() != null) {
-                            if (agent.getPosition().distanceTo(cell.getPoint()) < agent.getPosition().distanceTo(destination)) {
+                            if(shouldGoThere(cell, destination)) {
                                 destination = cell.getPoint();
-                                currentBin = (LitterBin) cell;
                             }
                         }
                     }
@@ -89,7 +92,7 @@ public class CollectState extends State {
             agent.setNextState(StateType.DUMP_STATE);
             return new DumpState(agent).Return(exploredMap);
         } else if (agent.getPosition().equals(destination)) {
-            LitterBin currentBin = (LitterBin)exploredMap.map.get(destination);
+            LitterBin currentBin = (LitterBin) exploredMap.map.get(destination);
             return new LoadAction(currentBin.getTask());
         }
 
