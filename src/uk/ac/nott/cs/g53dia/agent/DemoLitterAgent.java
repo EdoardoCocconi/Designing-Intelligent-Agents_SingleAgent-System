@@ -6,6 +6,7 @@ import uk.ac.nott.cs.g53dia.library.*;
 import java.util.Random;
 
 import static sun.security.pkcs11.wrapper.PKCS11Constants.FALSE;
+import static sun.security.pkcs11.wrapper.PKCS11Constants.TRUE;
 
 /**
  * A simple example LitterAgent
@@ -20,11 +21,7 @@ import static sun.security.pkcs11.wrapper.PKCS11Constants.FALSE;
  */
 public class DemoLitterAgent extends LitterAgent {
 
-    private StateType nextState = StateType.COLLECT_STATE;
-    private StateType previousState = StateType.COLLECT_STATE;
-    public boolean isMapCreated = FALSE;
-    ExploredMap exploredMap = new ExploredMap(this);
-
+    ExploredMap exploredMap = new ExploredMap();
 
     public DemoLitterAgent() {
         this(new Random());
@@ -41,93 +38,106 @@ public class DemoLitterAgent extends LitterAgent {
     }
 
 
-    public void setNextState(StateType nextState) {
-        this.previousState = this.nextState;
-        this.nextState = nextState;
-    }
+    public boolean shouldRecharge(ExploredMap exploredMap) {
 
-    public StateType getPreviousState() {
-        return previousState;
-    }
-
-    public void RechargeCondition(ExploredMap exploredMap) {
-
+        boolean recharge = FALSE;
         Point destination;
-        destination = new BatteryState(this, nextState).closestRecharge(exploredMap);
-        int distance = this.getPosition().distanceTo(destination);
+        destination = new RechargeDetector(this).readSensor(exploredMap);
+        int distance = getPosition().distanceTo(destination);
 
-        double charge = this.getChargeLevel();
+        double charge = getChargeLevel();
         double maxCharge = LitterAgent.MAX_CHARGE;
 
 //        if (charge <= distance + 1){
 //            System.out.println("Was about to die");
-//            setNextState(StateType.BATTERY_STATE);
+//            recharge = TRUE;
 //        } else if (charge <= maxCharge * 0.8 && distance <= ceil(4 * pow((1.0 - charge / maxCharge), 2) * 10)) {
-//            setNextState(StateType.BATTERY_STATE);
+//            recharge = TRUE;
 //        }
 
         if (charge <= distance + 2) {
 //            System.out.println("charge: " + charge + " distance: " + distance);
-            setNextState(StateType.BATTERY_STATE);
+            recharge = TRUE;
         } else if (charge <= maxCharge * 0.9 && distance <= 3) {
-            setNextState(StateType.BATTERY_STATE);
+            recharge = TRUE;
         } else if (charge <= maxCharge * 0.6 && distance <= 4) {
-            setNextState(StateType.BATTERY_STATE);
+            recharge = TRUE;
         } else if (charge <= maxCharge * 0.5 && distance <= 10) {
-            setNextState(StateType.BATTERY_STATE);
+            recharge = TRUE;
         } /*else if (charge <= maxCharge * 0.4 && distance <= 15) {*/
-//            setNextState(StateType.BATTERY_STATE);
+//            recharge = TRUE;
 //        } else if (charge <= maxCharge * 0.3 && distance <= 20) {
-//            setNextState(StateType.BATTERY_STATE);
+//            recharge = TRUE;
 //        } else if (charge <= maxCharge * 0.2 && distance <= 25) {
-//            setNextState(StateType.BATTERY_STATE);
+//            recharge = TRUE;
 //        }
 
 
 //        if (charge <= maxCharge * 0.9 && distance <= 3) {
-//            setNextState(StateType.BATTERY_STATE);
+//            recharge = TRUE;
 //        } else if (charge <= maxCharge * 0.5 && distance <= 10) {
-//            setNextState(StateType.BATTERY_STATE);
+//            recharge = TRUE;
 //        } else if (charge <= maxCharge * 0.2) {
-//            setNextState(StateType.BATTERY_STATE);
+//            recharge = TRUE;
 //        }
+
+        return recharge;
+    }
+
+
+
+    private StateType sense(ExploredMap exploredMap) {
+
+        double maxCapacity = LitterAgent.MAX_LITTER;
+        double currentLitter = this.getLitterLevel();
+        StateType nextState;
+        Point errorDestination = new Point(99999999, 99999999);
+
+        if (shouldRecharge(exploredMap)) {
+            nextState = StateType.BATTERY_STATE;
+        } else if (currentLitter != maxCapacity && (currentLitter == 0 || !new LitterDetector(this).readSensor(exploredMap).equals(errorDestination))) {
+            nextState = StateType.COLLECT_STATE;
+        } else if (currentLitter == maxCapacity || new LitterDetector(this).readSensor(exploredMap).equals(errorDestination)) {
+            nextState = StateType.DUMP_STATE;
+        } else {
+            nextState = StateType.EXPLORE_STATE;
+            System.out.println("Unexpected");
+        }
+
+        return nextState;
 
     }
 
 
-    /*
-     * The following is a simple demonstration of how to write a tanker. The
-     * code below is very stupid and simply moves the tanker randomly until the
-     * charge agt is half full, at which point it returns to a charge pump.
-     */
-    public Action senseAndAct(Cell[][] view, long timestep) {
-
-        exploredMap.Update(view);
-
-        if (nextState != StateType.BATTERY_STATE) {
-            RechargeCondition(exploredMap);
-        }
-
+    private Action act(StateType nextState) {
         Action resultAction = null;
 
         switch (nextState) {
 
             case BATTERY_STATE:
-                resultAction = new BatteryState(this, nextState).Return(exploredMap);
+                resultAction = new RechargeBehaviour(this).Return(exploredMap);
                 break;
             case EXPLORE_STATE:
                 resultAction = new ExploreState(this).Return(exploredMap);
                 break;
             case COLLECT_STATE:
-                resultAction = new CollectState(this).Return(exploredMap);
+                resultAction = new CollectBehaviour(this).Return(exploredMap);
                 break;
             case DUMP_STATE:
-                resultAction = new DumpState(this).Return(exploredMap);
+                resultAction = new DisposeBehaviour(this).Return(exploredMap);
                 break;
         }
 
 
         return resultAction;
+    }
+
+
+    public Action senseAndAct(Cell[][] view, long timestep) {
+
+        exploredMap.Update(view);
+        StateType nextState = sense(exploredMap);
+        return act(nextState);
 
     }
 }

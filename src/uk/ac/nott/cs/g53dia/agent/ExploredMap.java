@@ -5,16 +5,11 @@ import uk.ac.nott.cs.g53dia.library.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static sun.security.pkcs11.wrapper.PKCS11Constants.TRUE;
 
 public class ExploredMap {
 
-    public Map<Point, Cell> map;
+    public Map<Point, Cell> map = new HashMap<Point, Cell>();
 
-    public ExploredMap(DemoLitterAgent agent) {
-        this.map = new HashMap<Point, Cell>();
-        agent.isMapCreated = TRUE;
-    }
 
     public void Update(Cell[][] view) {
 

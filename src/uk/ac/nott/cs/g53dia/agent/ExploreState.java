@@ -2,12 +2,13 @@ package uk.ac.nott.cs.g53dia.agent;
 
 import uk.ac.nott.cs.g53dia.library.*;
 
+
 public class ExploreState extends State{
 
     LitterAgent agent;
 
     public ExploreState(LitterAgent agent) {
-        super(agent, StateType.BATTERY_STATE);
+        super(agent);
         this.agent = agent;
     }
 

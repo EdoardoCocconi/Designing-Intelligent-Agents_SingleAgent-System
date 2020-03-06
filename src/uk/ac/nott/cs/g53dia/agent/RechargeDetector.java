@@ -1,16 +1,20 @@
 package uk.ac.nott.cs.g53dia.agent;
 
-import uk.ac.nott.cs.g53dia.library.*;
+import uk.ac.nott.cs.g53dia.library.Cell;
+import uk.ac.nott.cs.g53dia.library.LitterAgent;
+import uk.ac.nott.cs.g53dia.library.Point;
+import uk.ac.nott.cs.g53dia.library.RechargePoint;
 
-public class BatteryState extends State{
+
+public class RechargeDetector extends Sensor{
 
 
-    public BatteryState(LitterAgent agent, StateType previousState) {
-        super(agent, StateType.BATTERY_STATE);
+    public RechargeDetector(LitterAgent agent) {
+        super(agent);
     }
 
 
-    public Point closestRecharge(ExploredMap exploredMap){
+    public Point readSensor(ExploredMap exploredMap){
 
         Point position = agent.getPosition();
         Point destination = new Point(99999999, 99999999);
@@ -35,18 +39,6 @@ public class BatteryState extends State{
         }
 
         return destination;
-
-    }
-
-
-    public Action Return (ExploredMap exploredMap){
-
-        if (agent.getPosition().equals(closestRecharge(exploredMap))) {
-            agent.setNextState(agent.getPreviousState());
-            return new RechargeAction();
-        }
-        return new MoveTowardsAction(closestRecharge(exploredMap));
-
 
     }
 
