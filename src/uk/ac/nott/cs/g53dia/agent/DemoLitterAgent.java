@@ -1,6 +1,6 @@
 package uk.ac.nott.cs.g53dia.agent;
 
-import uk.ac.nott.cs.g53dia.agent.State.StateType;
+import uk.ac.nott.cs.g53dia.agent.Behaviour.StateType;
 import uk.ac.nott.cs.g53dia.library.*;
 
 import java.util.Random;
@@ -21,7 +21,19 @@ import static sun.security.pkcs11.wrapper.PKCS11Constants.TRUE;
  */
 public class DemoLitterAgent extends LitterAgent {
 
+    RechargeBehaviour rechargeBehaviour = new RechargeBehaviour(this);
+    ExploreBehaviour exploreBehaviour = new ExploreBehaviour(this);
+    CollectBehaviour collectBehaviour = new CollectBehaviour(this);
+    DisposeBehaviour disposeBehaviour = new DisposeBehaviour(this);
+
+    LitterDetector litterDetector = new LitterDetector(this);
+    RechargeDetector rechargeDetector = new RechargeDetector(this);
+    StationDetector stationDetector = new StationDetector(this);
+
     ExploredMap exploredMap = new ExploredMap();
+
+    public Point agentDestination;
+    final Point errorDestination = new Point(99999999, 99999999);
 
     public DemoLitterAgent() {
         this(new Random());
@@ -42,7 +54,7 @@ public class DemoLitterAgent extends LitterAgent {
 
         boolean recharge = FALSE;
         Point destination;
-        destination = new RechargeDetector(this).readSensor(exploredMap);
+        destination = rechargeDetector.readSensor(exploredMap);
         int distance = getPosition().distanceTo(destination);
 
         double charge = getChargeLevel();
@@ -85,24 +97,22 @@ public class DemoLitterAgent extends LitterAgent {
     }
 
 
-
     private StateType sense(ExploredMap exploredMap) {
 
         double maxCapacity = LitterAgent.MAX_LITTER;
         double currentLitter = this.getLitterLevel();
         StateType nextState;
-        Point errorDestination = new Point(99999999, 99999999);
 
         if (shouldRecharge(exploredMap)) {
             nextState = StateType.BATTERY_STATE;
-        } else if (currentLitter != maxCapacity && (currentLitter == 0 || !new LitterDetector(this).readSensor(exploredMap).equals(errorDestination))) {
-            nextState = StateType.COLLECT_STATE;
-        } else if (currentLitter == maxCapacity || new LitterDetector(this).readSensor(exploredMap).equals(errorDestination)) {
-            nextState = StateType.DUMP_STATE;
-        } else {
+        } else if (exploreBehaviour.isExplorationGoing) {
             nextState = StateType.EXPLORE_STATE;
-            System.out.println("Unexpected");
+        } else if (currentLitter != maxCapacity && (currentLitter == 0 || !litterDetector.readSensor(exploredMap).equals(errorDestination))) {
+            nextState = StateType.COLLECT_STATE;
+        } else {
+            nextState = StateType.DUMP_STATE;
         }
+
 
         return nextState;
 
@@ -115,16 +125,16 @@ public class DemoLitterAgent extends LitterAgent {
         switch (nextState) {
 
             case BATTERY_STATE:
-                resultAction = new RechargeBehaviour(this).Return(exploredMap);
+                resultAction = rechargeBehaviour.act(exploredMap);
                 break;
             case EXPLORE_STATE:
-                resultAction = new ExploreState(this).Return(exploredMap);
+                resultAction = exploreBehaviour.act(exploredMap);
                 break;
             case COLLECT_STATE:
-                resultAction = new CollectBehaviour(this).Return(exploredMap);
+                resultAction = collectBehaviour.act(exploredMap);
                 break;
             case DUMP_STATE:
-                resultAction = new DisposeBehaviour(this).Return(exploredMap);
+                resultAction = disposeBehaviour.act(exploredMap);
                 break;
         }
 
@@ -135,7 +145,13 @@ public class DemoLitterAgent extends LitterAgent {
 
     public Action senseAndAct(Cell[][] view, long timestep) {
 
-        exploredMap.Update(view);
+        if (exploreBehaviour.isExplorationGoing)
+            exploredMap.updateMap(view);
+        else {
+            exploredMap.updateTasks(view);
+        }
+
+
         StateType nextState = sense(exploredMap);
         return act(nextState);
 

@@ -3,7 +3,7 @@ package uk.ac.nott.cs.g53dia.agent;
 import uk.ac.nott.cs.g53dia.library.*;
 
 
-public class DisposeBehaviour extends State {
+public class DisposeBehaviour extends Behaviour {
 
 
     public DisposeBehaviour(LitterAgent agent) {
@@ -11,9 +11,9 @@ public class DisposeBehaviour extends State {
     }
 
 
-    public Action Return(ExploredMap exploredMap) {
+    public Action act(ExploredMap exploredMap) {
 
-        Point destination = new StationDetector(agent).readSensor(exploredMap);
+        Point destination = agent.stationDetector.readSensor(exploredMap);
 
         if (agent.getPosition().equals(destination)) {
             return new DisposeAction();

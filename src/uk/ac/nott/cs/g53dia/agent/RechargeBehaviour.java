@@ -3,14 +3,14 @@ package uk.ac.nott.cs.g53dia.agent;
 import uk.ac.nott.cs.g53dia.library.*;
 
 
-public class RechargeBehaviour extends State{
+public class RechargeBehaviour extends Behaviour {
 
     public RechargeBehaviour(LitterAgent agent) {
         super(agent);
     }
 
 
-    public Action Return (ExploredMap exploredMap){
+    public Action act(ExploredMap exploredMap){
 
         Point destination = new RechargeDetector(agent).readSensor(exploredMap);
 

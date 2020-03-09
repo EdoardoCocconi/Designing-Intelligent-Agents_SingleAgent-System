@@ -3,7 +3,7 @@ package uk.ac.nott.cs.g53dia.agent;
 import uk.ac.nott.cs.g53dia.library.*;
 
 
-public abstract class State {
+public abstract class Behaviour {
 
     protected DemoLitterAgent agent;
 
@@ -15,11 +15,11 @@ public abstract class State {
     }
 
 
-    public State(LitterAgent agent) {
+    public Behaviour(LitterAgent agent) {
         this.agent = (DemoLitterAgent)agent;
     }
 
 
-    public abstract Action Return(ExploredMap exploredMap);
+    public abstract Action act(ExploredMap exploredMap);
 
 }

@@ -2,24 +2,48 @@ package uk.ac.nott.cs.g53dia.agent;
 
 import uk.ac.nott.cs.g53dia.library.*;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
-public class ExploreState extends State{
 
-    LitterAgent agent;
+public class ExploreBehaviour extends Behaviour {
 
-    public ExploreState(LitterAgent agent) {
+    public boolean isExplorationGoing = FALSE;
+
+    int halfSquareSide = 200;
+
+    Point origin = new Point(0, 0);
+
+    Point vertex1 = new Point(halfSquareSide, -halfSquareSide);
+    Point vertex2 = new Point(-halfSquareSide, -halfSquareSide * 3);
+    Point vertex3 = new Point(-halfSquareSide * 3, -halfSquareSide);
+    Point vertex4 = new Point(-halfSquareSide, halfSquareSide);
+
+
+    Point destination = vertex1;
+
+
+    public ExploreBehaviour(LitterAgent agent) {
         super(agent);
-        this.agent = agent;
     }
 
-    public Action Return (ExploredMap exploredMap){
 
-        int size = 30;
-        Point position = agent.getPosition();
-        Cell[][] view = exploredMap.getView(position, size);
+    public Action act(ExploredMap exploredMap) {
 
-        System.out.println("Explore State");
-        Point destination = new Point(500,0);
+        if (exploredMap.map.containsKey(vertex4)) {
+            destination = origin;
+            int distanceToOrigin = agent.getPosition().distanceTo(origin);
+            if (distanceToOrigin <= 30) {
+                isExplorationGoing = FALSE;
+            }
+        } else if (agent.getPosition().distanceTo(vertex3) <= 30) {
+            destination = vertex4;
+        } else if (agent.getPosition().distanceTo(vertex2) <= 30) {
+            destination = vertex3;
+        } else if (agent.getPosition().distanceTo(vertex1) <= 30) {
+            destination = vertex2;
+        }
+
         return new MoveTowardsAction(destination);
 
     }

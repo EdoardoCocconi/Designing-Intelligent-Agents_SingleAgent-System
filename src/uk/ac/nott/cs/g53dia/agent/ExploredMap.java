@@ -11,11 +11,25 @@ public class ExploredMap {
     public Map<Point, Cell> map = new HashMap<Point, Cell>();
 
 
-    public void Update(Cell[][] view) {
+    public void updateMap(Cell[][] view) {
 
         for (Cell[] row : view) {
             for (Cell cell : row) {
                 this.map.put(cell.getPoint(), cell);
+            }
+        }
+
+    }
+
+
+    public void updateTasks(Cell[][] view) {
+
+        for (Cell[] row : view) {
+            for (Cell cell : row) {
+                if (cell instanceof LitterBin) {
+                    if (this.map.containsKey(cell.getPoint()))
+                        this.map.put(cell.getPoint(), cell);
+                }
             }
         }
 
