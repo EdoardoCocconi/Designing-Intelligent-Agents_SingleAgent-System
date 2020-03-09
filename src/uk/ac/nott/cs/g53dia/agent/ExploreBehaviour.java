@@ -8,7 +8,7 @@ import static java.lang.Boolean.TRUE;
 
 public class ExploreBehaviour extends Behaviour {
 
-    public boolean isExplorationGoing = FALSE;
+    public boolean isExplorationGoing = TRUE;
 
     int halfSquareSide = 200;
 

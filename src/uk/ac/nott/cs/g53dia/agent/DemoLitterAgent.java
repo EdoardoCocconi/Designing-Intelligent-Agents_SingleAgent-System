@@ -31,6 +31,7 @@ public class DemoLitterAgent extends LitterAgent {
     StationDetector stationDetector = new StationDetector(this);
 
     ExploredMap exploredMap = new ExploredMap();
+    final int finalTime = 10000;
 
     public Point agentDestination;
     final Point errorDestination = new Point(99999999, 99999999);
@@ -50,7 +51,7 @@ public class DemoLitterAgent extends LitterAgent {
     }
 
 
-    public boolean shouldRecharge(ExploredMap exploredMap) {
+    public boolean shouldRecharge(ExploredMap exploredMap, long timestep) {
 
         boolean recharge = FALSE;
         Point destination;
@@ -60,6 +61,7 @@ public class DemoLitterAgent extends LitterAgent {
         double charge = getChargeLevel();
         double maxCharge = LitterAgent.MAX_CHARGE;
 
+
 //        if (charge <= distance + 1){
 //            System.out.println("Was about to die");
 //            recharge = TRUE;
@@ -67,16 +69,16 @@ public class DemoLitterAgent extends LitterAgent {
 //            recharge = TRUE;
 //        }
 
-        if (charge <= distance + 2) {
+            if (charge <= distance + 2) {
 //            System.out.println("charge: " + charge + " distance: " + distance);
-            recharge = TRUE;
-        } else if (charge <= maxCharge * 0.9 && distance <= 3) {
-            recharge = TRUE;
-        } else if (charge <= maxCharge * 0.6 && distance <= 4) {
-            recharge = TRUE;
-        } else if (charge <= maxCharge * 0.5 && distance <= 10) {
-            recharge = TRUE;
-        } /*else if (charge <= maxCharge * 0.4 && distance <= 15) {*/
+                recharge = TRUE;
+            } else if (charge <= maxCharge * 0.9 && distance <= 3) {
+                recharge = TRUE;
+            } else if (charge <= maxCharge * 0.6 && distance <= 4) {
+                recharge = TRUE;
+            } else if (charge <= maxCharge * 0.5 && distance <= 10) {
+                recharge = TRUE;
+            } /*else if (charge <= maxCharge * 0.4 && distance <= 15) {*/
 //            recharge = TRUE;
 //        } else if (charge <= maxCharge * 0.3 && distance <= 20) {
 //            recharge = TRUE;
@@ -93,17 +95,22 @@ public class DemoLitterAgent extends LitterAgent {
 //            recharge = TRUE;
 //        }
 
+        // Doesn't charge at the end. Only cares about points
+        if((finalTime - timestep) < maxCharge && charge > (finalTime - timestep)) {
+            recharge = FALSE;
+        }
+
         return recharge;
     }
 
 
-    private StateType sense(ExploredMap exploredMap) {
+    private StateType sense(ExploredMap exploredMap, long timestep) {
 
         double maxCapacity = LitterAgent.MAX_LITTER;
         double currentLitter = this.getLitterLevel();
         StateType nextState;
 
-        if (shouldRecharge(exploredMap)) {
+        if (shouldRecharge(exploredMap, timestep)) {
             nextState = StateType.BATTERY_STATE;
         } else if (exploreBehaviour.isExplorationGoing) {
             nextState = StateType.EXPLORE_STATE;
@@ -151,8 +158,7 @@ public class DemoLitterAgent extends LitterAgent {
             exploredMap.updateTasks(view);
         }
 
-
-        StateType nextState = sense(exploredMap);
+        StateType nextState = sense(exploredMap, timestep);
         return act(nextState);
 
     }
