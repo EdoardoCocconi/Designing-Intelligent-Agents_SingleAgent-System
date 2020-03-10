@@ -112,7 +112,7 @@ public class DemoLitterAgent extends LitterAgent {
 
         if (shouldRecharge(exploredMap, timestep)) {
             nextState = StateType.BATTERY_STATE;
-        } else if (exploreBehaviour.isExplorationGoing) {
+        } else if (FALSE/*exploreBehaviour.isExplorationGoing*/) {
             nextState = StateType.EXPLORE_STATE;
         } else if (currentLitter != maxCapacity && (currentLitter == 0 || !litterDetector.readSensor(exploredMap).equals(errorDestination))) {
             nextState = StateType.COLLECT_STATE;
@@ -152,7 +152,7 @@ public class DemoLitterAgent extends LitterAgent {
 
     public Action senseAndAct(Cell[][] view, long timestep) {
 
-        if (exploreBehaviour.isExplorationGoing)
+        if (TRUE/*exploreBehaviour.isExplorationGoing*/)
             exploredMap.updateMap(view);
         else {
             exploredMap.updateTasks(view);
