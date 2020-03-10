@@ -20,10 +20,10 @@ public class LitterDetector extends Sensor {
         LitterBin litterBin = (LitterBin) cell;
         if (litterBin.getTask() != null) {
             int score = litterBin.getTask().getRemaining();
-            if (score > currentCapacity)
-                score = (int)currentCapacity;
-            if (score / (distance + 1) > previousScore / (previousDistance + 1))
-                return TRUE;
+            if (score < currentCapacity) {
+                if (score / (distance + 1) > previousScore / (previousDistance + 1))
+                    return TRUE;
+            }
         }
         return FALSE;
     }

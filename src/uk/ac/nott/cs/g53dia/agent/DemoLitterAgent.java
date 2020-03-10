@@ -69,7 +69,9 @@ public class DemoLitterAgent extends LitterAgent {
 //            recharge = TRUE;
 //        }
 
-            if (charge <= distance + 2) {
+        if (agentDestination != null) {
+
+            if (charge <= distance + 2 /*+ this.getPosition().distanceTo(agentDestination)*/) {
 //            System.out.println("charge: " + charge + " distance: " + distance);
                 recharge = TRUE;
             } else if (charge <= maxCharge * 0.9 && distance <= 3) {
@@ -78,7 +80,8 @@ public class DemoLitterAgent extends LitterAgent {
                 recharge = TRUE;
             } else if (charge <= maxCharge * 0.5 && distance <= 10) {
                 recharge = TRUE;
-            } /*else if (charge <= maxCharge * 0.4 && distance <= 15) {*/
+            }
+        }/*else if (charge <= maxCharge * 0.4 && distance <= 15) {*/
 //            recharge = TRUE;
 //        } else if (charge <= maxCharge * 0.3 && distance <= 20) {
 //            recharge = TRUE;
@@ -96,7 +99,7 @@ public class DemoLitterAgent extends LitterAgent {
 //        }
 
         // Doesn't charge at the end. Only cares about points
-        if((finalTime - timestep) < maxCharge && charge > (finalTime - timestep)) {
+        if ((finalTime - timestep) < maxCharge && charge > (finalTime - timestep)) {
             recharge = FALSE;
         }
 

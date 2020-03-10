@@ -13,14 +13,14 @@ public class CollectBehaviour extends Behaviour {
 
      public Action act(ExploredMap exploredMap) {
 
-        Point destination = agent.litterDetector.readSensor(exploredMap);
+         agent.agentDestination = agent.litterDetector.readSensor(exploredMap);
 
-        if (agent.getPosition().equals(destination)) {
-            LitterBin currentBin = (LitterBin) exploredMap.map.get(destination);
+        if (agent.getPosition().equals(agent.agentDestination)) {
+            LitterBin currentBin = (LitterBin) exploredMap.map.get(agent.agentDestination);
             return new LoadAction(currentBin.getTask());
         }
 
-        return new MoveTowardsAction(destination);
+        return new MoveTowardsAction(agent.agentDestination);
 
     }
 

@@ -12,12 +12,12 @@ public class RechargeBehaviour extends Behaviour {
 
     public Action act(ExploredMap exploredMap){
 
-        Point destination = new RechargeDetector(agent).readSensor(exploredMap);
+        agent.agentDestination = new RechargeDetector(agent).readSensor(exploredMap);
 
-        if (agent.getPosition().equals(destination)) {
+        if (agent.getPosition().equals(agent.agentDestination)) {
             return new RechargeAction();
         }
-        return new MoveTowardsAction(destination);
+        return new MoveTowardsAction(agent.agentDestination);
 
     }
 

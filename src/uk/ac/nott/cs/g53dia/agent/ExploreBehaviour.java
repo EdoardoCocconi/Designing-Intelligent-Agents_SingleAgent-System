@@ -44,7 +44,9 @@ public class ExploreBehaviour extends Behaviour {
             destination = vertex2;
         }
 
-        return new MoveTowardsAction(destination);
+        agent.agentDestination = destination;
+
+        return new MoveTowardsAction(agent.agentDestination);
 
     }
 

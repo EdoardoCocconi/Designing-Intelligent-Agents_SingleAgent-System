@@ -13,12 +13,12 @@ public class DisposeBehaviour extends Behaviour {
 
     public Action act(ExploredMap exploredMap) {
 
-        Point destination = agent.stationDetector.readSensor(exploredMap);
+        agent.agentDestination = agent.stationDetector.readSensor(exploredMap);
 
-        if (agent.getPosition().equals(destination)) {
+        if (agent.getPosition().equals(agent.agentDestination)) {
             return new DisposeAction();
         } else {
-            return new MoveTowardsAction(destination);
+            return new MoveTowardsAction(agent.agentDestination);
         }
 
     }
