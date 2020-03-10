@@ -78,9 +78,9 @@ public class DemoLitterAgent extends LitterAgent {
                 recharge = TRUE;
             } else if (charge <= maxCharge * 0.6 && distance <= 4) {
                 recharge = TRUE;
-            } else if (charge <= maxCharge * 0.5 && distance <= 10) {
+            } /*else if (charge <= maxCharge * 0.5 && distance <= 10) {
                 recharge = TRUE;
-            }
+            }*/
         }/*else if (charge <= maxCharge * 0.4 && distance <= 15) {*/
 //            recharge = TRUE;
 //        } else if (charge <= maxCharge * 0.3 && distance <= 20) {
