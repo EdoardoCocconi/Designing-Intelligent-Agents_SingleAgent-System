@@ -17,7 +17,7 @@ public class Evaluator {
     public static void main(String[] args) {
 
 	long score = 0;
-	DecimalFormat df = new   DecimalFormat("0.000E00");
+	DecimalFormat df = new DecimalFormat("0.000E00");
 
 	// run the agent for NRUNS times and compute the average score
 	for (int i = 0; i < NRUNS; i++) {

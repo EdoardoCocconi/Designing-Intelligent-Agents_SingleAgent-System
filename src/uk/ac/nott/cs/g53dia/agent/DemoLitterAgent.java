@@ -1,12 +1,9 @@
 package uk.ac.nott.cs.g53dia.agent;
 
-import uk.ac.nott.cs.g53dia.agent.Behaviour.StateType;
+import uk.ac.nott.cs.g53dia.agent.Behaviour.BehaviourType;
 import uk.ac.nott.cs.g53dia.library.*;
 
 import java.util.Random;
-
-import static sun.security.pkcs11.wrapper.PKCS11Constants.FALSE;
-import static sun.security.pkcs11.wrapper.PKCS11Constants.TRUE;
 
 /**
  * A simple example LitterAgent
@@ -35,6 +32,7 @@ public class DemoLitterAgent extends LitterAgent {
 
     public Point agentDestination;
     final Point errorDestination = new Point(99999999, 99999999);
+    final Point origin = new Point(0, 0);
 
     public DemoLitterAgent() {
         this(new Random());
@@ -51,99 +49,42 @@ public class DemoLitterAgent extends LitterAgent {
     }
 
 
-    public boolean shouldRecharge(ExploredMap exploredMap, long timestep) {
-
-        boolean recharge = FALSE;
-        Point destination;
-        destination = rechargeDetector.readSensor(exploredMap);
-        int distance = getPosition().distanceTo(destination);
-
-        double charge = getChargeLevel();
-        double maxCharge = LitterAgent.MAX_CHARGE;
-
-
-//        if (charge <= distance + 1){
-//            System.out.println("Was about to die");
-//            recharge = TRUE;
-//        } else if (charge <= maxCharge * 0.8 && distance <= ceil(4 * pow((1.0 - charge / maxCharge), 2) * 10)) {
-//            recharge = TRUE;
-//        }
-
-        if (agentDestination != null) {
-
-            if (charge <= distance + 2 /*+ this.getPosition().distanceTo(agentDestination)*/) {
-//            System.out.println("charge: " + charge + " distance: " + distance);
-                recharge = TRUE;
-            } else if (charge <= maxCharge * 0.9 && distance <= 3) {
-                recharge = TRUE;
-            } else if (charge <= maxCharge * 0.6 && distance <= 4) {
-                recharge = TRUE;
-            } /*else if (charge <= maxCharge * 0.5 && distance <= 10) {
-                recharge = TRUE;
-            }*/
-        }/*else if (charge <= maxCharge * 0.4 && distance <= 15) {*/
-//            recharge = TRUE;
-//        } else if (charge <= maxCharge * 0.3 && distance <= 20) {
-//            recharge = TRUE;
-//        } else if (charge <= maxCharge * 0.2 && distance <= 25) {
-//            recharge = TRUE;
-//        }
-
-
-//        if (charge <= maxCharge * 0.9 && distance <= 3) {
-//            recharge = TRUE;
-//        } else if (charge <= maxCharge * 0.5 && distance <= 10) {
-//            recharge = TRUE;
-//        } else if (charge <= maxCharge * 0.2) {
-//            recharge = TRUE;
-//        }
-
-        // Doesn't charge at the end. Only cares about points
-        if ((finalTime - timestep) < maxCharge && charge > (finalTime - timestep)) {
-            recharge = FALSE;
-        }
-
-        return recharge;
-    }
-
-
-    private StateType sense(ExploredMap exploredMap, long timestep) {
+    private BehaviourType sense(ExploredMap exploredMap, long timestep) {
 
         double maxCapacity = LitterAgent.MAX_LITTER;
         double currentLitter = this.getLitterLevel();
-        StateType nextState;
+        BehaviourType nextState;
 
-        if (shouldRecharge(exploredMap, timestep)) {
-            nextState = StateType.BATTERY_STATE;
-        } else if (FALSE/*exploreBehaviour.isExplorationGoing*/) {
-            nextState = StateType.EXPLORE_STATE;
+        if (rechargeDetector.isRechargeInRange(exploredMap, timestep)) {
+            nextState = BehaviourType.BATTERY_BEHAVIOUR;
         } else if (currentLitter != maxCapacity && (currentLitter == 0 || !litterDetector.readSensor(exploredMap).equals(errorDestination))) {
-            nextState = StateType.COLLECT_STATE;
+            nextState = BehaviourType.COLLECT_BEHAVIOUR;
+        } else if (!stationDetector.readSensor(exploredMap).equals(errorDestination)) {
+            nextState = BehaviourType.DUMP_BEHAVIOUR;
         } else {
-            nextState = StateType.DUMP_STATE;
+            nextState = BehaviourType.EXPLORE_BEHAVIOUR;
         }
-
 
         return nextState;
 
     }
 
 
-    private Action act(StateType nextState) {
+    private Action act(BehaviourType nextState) {
         Action resultAction = null;
 
         switch (nextState) {
 
-            case BATTERY_STATE:
+            case BATTERY_BEHAVIOUR:
                 resultAction = rechargeBehaviour.act(exploredMap);
                 break;
-            case EXPLORE_STATE:
+            case EXPLORE_BEHAVIOUR:
                 resultAction = exploreBehaviour.act(exploredMap);
                 break;
-            case COLLECT_STATE:
+            case COLLECT_BEHAVIOUR:
                 resultAction = collectBehaviour.act(exploredMap);
                 break;
-            case DUMP_STATE:
+            case DUMP_BEHAVIOUR:
                 resultAction = disposeBehaviour.act(exploredMap);
                 break;
         }
@@ -155,13 +96,9 @@ public class DemoLitterAgent extends LitterAgent {
 
     public Action senseAndAct(Cell[][] view, long timestep) {
 
-        if (TRUE/*exploreBehaviour.isExplorationGoing*/)
-            exploredMap.updateMap(view);
-        else {
-            exploredMap.updateTasks(view);
-        }
+        exploredMap.updateMap(view);
 
-        StateType nextState = sense(exploredMap, timestep);
+        BehaviourType nextState = sense(exploredMap, timestep);
         return act(nextState);
 
     }

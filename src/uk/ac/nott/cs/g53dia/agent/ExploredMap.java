@@ -22,20 +22,6 @@ public class ExploredMap {
     }
 
 
-    public void updateTasks(Cell[][] view) {
-
-        for (Cell[] row : view) {
-            for (Cell cell : row) {
-                if (cell instanceof LitterBin) {
-                    if (this.map.containsKey(cell.getPoint()))
-                        this.map.put(cell.getPoint(), cell);
-                }
-            }
-        }
-
-    }
-
-
     public Cell[][] getView(Point pos, int size) {
         Cell[][] res = new Cell[size * 2 + 1][size * 2 + 1];
         for (int x = pos.getX() - size; x <= pos.getX() + size; x++) {

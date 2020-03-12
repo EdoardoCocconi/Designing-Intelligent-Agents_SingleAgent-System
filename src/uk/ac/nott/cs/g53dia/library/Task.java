@@ -16,59 +16,60 @@ import java.util.Random;
  */
 
 public abstract class Task {
-	/**
-	 * The maximum amount of litter that must be disposed of in a single task
-	 */
+    /**
+     * The maximum amount of litter that must be disposed of in a single task
+     */
 
-	public static final int MAX_AMOUNT = LitterAgent.MAX_LITTER;
+    public static final int MAX_AMOUNT = 100;
 
-	LitterBin litterBin;
-	int amount;
-	int disposed = 0;
-	boolean completed = false;
+    LitterBin litterBin;
+    int amount;
+    int disposed = 0;
+    boolean completed = false;
 
-	/**
-	 * Get the position of the litterBin from which the litter should be collected
-	 * 
-	 */
+    /**
+     * Get the position of the litterBin from which the litter should
+     * be collected
+     *
+     */
 
-	public Point getPosition() {
-		return litterBin.getPoint();
+    public Point getPosition() {
+	return litterBin.getPoint();
+    }
+
+    /**
+     * Get the amount of litter to be disposed of
+     * 
+     */
+
+    public int getAmount() {
+	return amount;
+    }
+
+    /**
+     * How much litter must be disposed of to complete the task?
+     * 
+     */
+    public int getRemaining() {
+	return amount - disposed;
+    }
+
+    /**
+     * Is this task completed?
+     * 
+     */
+    public boolean isComplete() {
+	return disposed >= amount;
+    }
+
+    protected void setAmount(int a) {
+	this.amount = a;
+    }
+
+    protected void dispose(int d) {
+	disposed += d;
+	if (isComplete()) {
+	    this.litterBin.removeTask();
 	}
-
-	/**
-	 * Get the amount of litter to be disposed of
-	 * 
-	 */
-
-	public int getAmount() {
-		return amount;
-	}
-
-	/**
-	 * How much litter must be disposed of to complete the task?
-	 * 
-	 */
-	public int getRemaining() {
-		return amount - disposed;
-	}
-
-	/**
-	 * Is this task completed?
-	 * 
-	 */
-	public boolean isComplete() {
-		return disposed >= amount;
-	}
-
-	protected void setAmount(int a) {
-		this.amount = a;
-	}
-
-	protected void dispose(int d) {
-		disposed += d;
-		if (isComplete()) {
-			this.litterBin.removeTask();
-		}
-	}
+    }
 }

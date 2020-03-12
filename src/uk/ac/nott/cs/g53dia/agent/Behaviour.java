@@ -7,11 +7,11 @@ public abstract class Behaviour {
 
     protected DemoLitterAgent agent;
 
-    public enum StateType {
-        BATTERY_STATE,
-        EXPLORE_STATE,
-        COLLECT_STATE,
-        DUMP_STATE;
+    public enum BehaviourType {
+        BATTERY_BEHAVIOUR,
+        EXPLORE_BEHAVIOUR,
+        COLLECT_BEHAVIOUR,
+        DUMP_BEHAVIOUR;
     }
 
 

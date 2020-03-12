@@ -14,7 +14,7 @@ public class LitterDetector extends Sensor {
     }
 
 
-    public boolean shouldGoThere(Cell cell, Point previousDestination, int previousScore, double currentCapacity) {
+    public boolean betterBin(Cell cell, Point previousDestination, int previousScore, double currentCapacity) {
         int previousDistance = agent.getPosition().distanceTo(previousDestination);
         int distance = agent.getPosition().distanceTo(cell.getPoint());
         LitterBin litterBin = (LitterBin) cell;
@@ -37,13 +37,10 @@ public class LitterDetector extends Sensor {
         int maxCapacity = LitterAgent.MAX_LITTER;
         double currentCapacity = maxCapacity - currentLitter;
         double capacityPercentage = currentCapacity / maxCapacity;
-        int size = (int) ceil(30 * capacityPercentage);
+        int viewField = (int) ceil(30 * capacityPercentage);
 
         Point position = agent.getPosition();
-        Cell[][] view = exploredMap.getView(position, size);
-//        int x = agent.getPosition().getX();
-//        int y = agent.getPosition().getY();
-//        Point destination = new Point(x + 30, y + 30);
+        Cell[][] view = exploredMap.getView(position, viewField);
         Point destination = new Point(99999999, 99999999);
         int score = 0;
 
@@ -51,7 +48,7 @@ public class LitterDetector extends Sensor {
             for (Cell cell : row) {
                 if (currentWaste != 0 && currentRecycling == 0) {
                     if (cell instanceof WasteBin) {
-                        if (shouldGoThere(cell, destination, score, currentCapacity)) {
+                        if (betterBin(cell, destination, score, currentCapacity)) {
                             LitterBin litterBin = (LitterBin) cell;
                             score = litterBin.getTask().getRemaining();
                             destination = cell.getPoint();
@@ -61,7 +58,7 @@ public class LitterDetector extends Sensor {
                     if (cell instanceof RecyclingBin) {
                         RecyclingBin litterBin = (RecyclingBin) cell;
                         if (litterBin.getTask() != null) {
-                            if (shouldGoThere(cell, destination, score, currentCapacity)) {
+                            if (betterBin(cell, destination, score, currentCapacity)) {
                                 score = litterBin.getTask().getRemaining();
                                 destination = cell.getPoint();
                             }
@@ -71,7 +68,7 @@ public class LitterDetector extends Sensor {
                     if (cell instanceof LitterBin) {
                         LitterBin litterBin = (LitterBin) cell;
                         if (litterBin.getTask() != null) {
-                            if (shouldGoThere(cell, destination, score, currentCapacity)) {
+                            if (betterBin(cell, destination, score, currentCapacity)) {
                                 score = litterBin.getTask().getRemaining();
                                 destination = cell.getPoint();
                             }

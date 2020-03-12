@@ -18,7 +18,6 @@ public class StationDetector extends Sensor{
         Cell[][] view = exploredMap.getView(position, size);
         Point errorDestination = new Point(99999999, 99999999);
         Point destination = errorDestination;
-        Point origin = new Point(0, 0);
 
         if (agent.getWasteLevel() != 0) {
 
@@ -46,9 +45,6 @@ public class StationDetector extends Sensor{
             }
 
         }
-
-        if (destination.equals(errorDestination) && position.distanceTo(origin) > 30)
-            destination = origin;
 
         return destination;
 
