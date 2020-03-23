@@ -57,9 +57,9 @@ public class DemoLitterAgent extends LitterAgent {
 
         if (rechargeDetector.isRechargeInRange(exploredMap, timestep)) {
             nextState = BehaviourType.BATTERY_BEHAVIOUR;
-        } else if (currentLitter != maxCapacity && (currentLitter == 0 || !litterDetector.readSensor(exploredMap).equals(errorDestination))) {
+        } else if (currentLitter != maxCapacity && !litterDetector.readSensor(exploredMap).equals(errorDestination)) {
             nextState = BehaviourType.COLLECT_BEHAVIOUR;
-        } else if (!stationDetector.readSensor(exploredMap).equals(errorDestination)) {
+        } else if (currentLitter != 0 && !stationDetector.readSensor(exploredMap).equals(errorDestination)) {
             nextState = BehaviourType.DUMP_BEHAVIOUR;
         } else {
             nextState = BehaviourType.EXPLORE_BEHAVIOUR;

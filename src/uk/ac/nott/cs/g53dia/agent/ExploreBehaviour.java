@@ -14,8 +14,6 @@ public class ExploreBehaviour extends Behaviour {
     public Action act(ExploredMap exploredMap) {
 
         Point destination = agent.errorDestination;
-        if (agent.getPosition().distanceTo(agent.origin) > 30)
-            destination = agent.origin;
 
         return new MoveTowardsAction(destination);
 
