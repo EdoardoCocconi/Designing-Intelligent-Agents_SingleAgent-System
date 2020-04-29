@@ -39,6 +39,8 @@ recycling it must be taken to a recycling station before waste is loaded
 - a run lasts 10,000 timesteps unless the agent runs out of battery, in which case the run is terminated
 - the success (score) of the agent is determined by the total amount of recycling and waste collected
 
+<br>
+
 ## Architecture
 
 The agent has a reactive architecture with hierarchical control. The hierarchy is implemented in the Sense method of DemoLitterAgent as a series of if-conditions. The higher the priority the earlier the condition is checked. If a condition is met, the corresponding behavior is triggered. The behaviors are listed here from highest priority to lowest priority:
