@@ -120,7 +120,7 @@ The agent goes to the closest station. This allows it to complete the current cl
 
 <br>
 
-![Score Screenshot](Assets/Score.png)
+![Score Screenshot](Assets/Score.jpg)
 
 <br>
 
