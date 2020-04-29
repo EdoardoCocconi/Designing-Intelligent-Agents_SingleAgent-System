@@ -10,6 +10,8 @@
 
 The java source code of the agent can be found in the following folder:
 
+An improved version of the agent can be found in the Designing-Intelligent-Agents_MultiAgent-System repository.
+
 The source code of the environment in which the agent operates can be found in the following folder:
 
 To see the agent in action, run the file:
@@ -116,5 +118,6 @@ The agent goes to the closest station. This allows it to complete the current cl
 
 ## Performance
 
+Agent's average score over 10 runs: 3.643E04
 
-
+> *©  2019  Edoardo  M.  Cocconi  All  Rights  Reserved*
