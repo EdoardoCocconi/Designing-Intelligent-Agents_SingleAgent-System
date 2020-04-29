@@ -12,6 +12,8 @@ To see the agent in action, run the file:
 
 To measure the agent performance over 10 runs, run the file:
 
+<br>
+
 ## Architecture
 
 The agent has a reactive architecture with hierarchical control. The hierarchy is implemented in the Sense method of DemoLitterAgent as a series of if-conditions. The higher the priority the earlier the condition is checked. If a condition is met, the corresponding behavior is triggered. The behaviors are listed here from highest priority to lowest priority:
@@ -30,6 +32,8 @@ The Sense method receives percepts from 3 Sensors:
 
 The sense method runs at every timestep inside senseAndAct and selects a Behaviour. If nothing is detected, the ExploreBehaviour is selected. The selected behaviors is carried out by the Act method inside senseAndAct.
 
+<br>
+
 ## Why the hierarchy is appropriate for the project
 
 The chosen hierarchy is a successful representation of the priorities of the agent. In order: the agent preserves itself, completes tasks, disposes the litter once enough tasks have been completed, and moves if there is nothing to do in the current area.
@@ -39,9 +43,13 @@ The chosen task is always the one that will allow the agent to perform the great
 This approach has the additional advantage that after some updates it can become the perfect starting point to implement multiple agents in the next project, which will be more computationally expensive.
 As will be explained in question 7 the agent is likely to complete a cluster of tasks before moving to the next cluster. If every high value task was surrounded by many low value tasks, the agent would not understand that it has to change cluster if the latter is too far away. Also, the agent exploits the fact that points are awarded only at task completion. If points were awarded for partial completion, the agent would have to be changed so it does not avoid partial completion.
 
+<br>
+
 ## Mapping
 
 The agent does have an internal representation of the environment. The class that manages this internal representation is ExploredMap. The method updateMap adds the current view to a hash map with Point as key and Cell as value. This allows to add new tasks and unexplored regions to the map. updateMap is called at every timestep inside the senseAndAct method. The map allows the agent to know the location of the nearest explored recharge station at all times, even if it is outside its field of view. In the next coursework it might be used to communicate to other agents the location of clusters of tasks.
+
+<br>
 
 ## Recharge
 
@@ -53,6 +61,8 @@ The agent does not recharge if the battery can last until the end of the simulat
 
 This is implemented in the isRechargeInRange method in the RechargeDetector class. The method outputs TRUE if a RechargeStation is present in the respective radius.
 
+<br>
+
 ## Explore
 
 The initial intention of the coursework was to explore the environment first, so more tasks start spawning, and the agent can record the position of the bins. The agent would have moved inside the explored environment where the probability of a task being present is higher. However, this initial exploration either produces an environment that is too small or wastes to many timesteps.
@@ -61,11 +71,15 @@ In the final version of the coursework, the exploration is only triggered when t
 
 This is implemented in the ExploreBehaviour class.
 
+<br>
+
 ## Choosing the bin
 
 The agent finds the task with the highest litter over distance ratio in the specified field of view. The field of view is inversely proportional to the current litter capacity of the agent. If the agent is 90% full, the field of view is reduced by 90%. Therefore, the agent won’t look for high value tasks that are far away because the agent could not complete them anyways. Instead, the agent prefers to go to the tasks close to it that can be completed before going to the station. 
 
 The bin with the highest litter over distance ratio is found by the readSensor method of the LitterDetector class. The readSensor method is called in the sense method in DemoLitterAgent. When the field of view is so small that the agent does not see any task, or when the agent is full, the CollectBehaviour does not run anymore.
+
+<br>
 
 ## Chosing the station
 
