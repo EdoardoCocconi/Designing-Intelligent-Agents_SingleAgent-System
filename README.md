@@ -118,6 +118,12 @@ The agent goes to the closest station. This allows it to complete the current cl
 
 ## Performance
 
+<br>
+
+![Score Screenshot](Assets/Score.png)
+
+<br>
+
 Agent's average score over 10 runs: 3.643E04
 
 > *©  2019  Edoardo  M.  Cocconi  All  Rights  Reserved*
