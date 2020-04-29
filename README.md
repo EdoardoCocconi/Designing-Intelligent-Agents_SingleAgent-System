@@ -1,6 +1,6 @@
 # Designing Intelligent Agents: Single Agent System
 
-### Getting Started
+## Getting Started
 
 
 The java source code of the agent can be found in the following folder:
