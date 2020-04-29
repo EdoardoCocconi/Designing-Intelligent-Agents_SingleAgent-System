@@ -74,7 +74,7 @@ As will be explained in question 7 the agent is likely to complete a cluster of 
 
 ## Mapping
 
-The agent does have an internal representation of the environment. The class that manages this internal representation is ExploredMap. The method updateMap adds the current view to a hash map with Point as key and Cell as value. This allows to add new tasks and unexplored regions to the map. updateMap is called at every timestep inside the senseAndAct method. The map allows the agent to know the location of the nearest explored recharge station at all times, even if it is outside its field of view. In the next coursework it might be used to communicate to other agents the location of clusters of tasks.
+The agent does have an internal representation of the environment. The class that manages this internal representation is ExploredMap. The method updateMap adds the current view to a hash map with Point as key and Cell as value. This allows to add new tasks and unexplored regions to the map. updateMap is called at every timestep inside the senseAndAct method. The map allows the agent to know the location of the nearest explored recharge station at all times, even if it is outside its field of view. In the next project it might be used to communicate to other agents the location of clusters of tasks.
 
 <br>
 
@@ -92,9 +92,9 @@ This is implemented in the isRechargeInRange method in the RechargeDetector clas
 
 ## Explore
 
-The initial intention of the coursework was to explore the environment first, so more tasks start spawning, and the agent can record the position of the bins. The agent would have moved inside the explored environment where the probability of a task being present is higher. However, this initial exploration either produces an environment that is too small or wastes to many timesteps.
+The initial intention of the project was to explore the environment first, so more tasks start spawning, and the agent can record the position of the bins. The agent would have moved inside the explored environment where the probability of a task being present is higher. However, this initial exploration either produces an environment that is too small or wastes to many timesteps.
 
-In the final version of the coursework, the exploration is only triggered when there is nothing else to do. During the exploration, the agent moves away from the origin if its distance from the origin is less than 30, and it gets closer to the origin when it is greater or equal to 30. The areas close to the origin have a higher probability to be already explored and therefore have a higher probability to contain more tasks over time.
+In the final version of the project, the exploration is only triggered when there is nothing else to do. During the exploration, the agent moves away from the origin if its distance from the origin is less than 30, and it gets closer to the origin when it is greater or equal to 30. The areas close to the origin have a higher probability to be already explored and therefore have a higher probability to contain more tasks over time.
 
 This is implemented in the ExploreBehaviour class.
 
@@ -111,3 +111,10 @@ The bin with the highest litter over distance ratio is found by the readSensor m
 ## Chosing the station
 
 The agent goes to the closest station. This allows it to complete the current cluster of tasks before going to the next one. This is implemented in the readSensor method in the StationDetector class.
+
+<br>
+
+## Performance
+
+
+
