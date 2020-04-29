@@ -8,15 +8,15 @@
 
 ## Getting Started
 
-The java source code of the **agent** can be found in the **DemoLitterAgent.java** file located in the following folder: **src\uk\ac\nott\cs\g53dia\agent**
+- The java source code of the **agent** can be found in the **DemoLitterAgent.java** file located in the following folder: **src\uk\ac\nott\cs\g53dia\agent**
 
-An **improved version of the agent** can be found in the **Designing-Intelligent-Agents_MultiAgent-System** repository which contains the following project.
+- An **improved version of the agent** can be found in the **Designing-Intelligent-Agents_MultiAgent-System** repository which contains the following project.
 
-The source code of the **environment** in which the agent operates can be found in the following folder: **src\uk\ac\nott\cs\g53dia\library**
+- The source code of the **environment** in which the agent operates can be found in the following folder: **src\uk\ac\nott\cs\g53dia\library**
 
-To see the agent in action, run the **Simulator.java** file located in the following folder: **src\uk\ac\nott\cs\g53dia\Simulator**
+- To see the agent in action, run the **Simulator.java** file located in the following folder: **src\uk\ac\nott\cs\g53dia\Simulator**
 
-To measure the agent performance over 10 runs, run the **Evaluator.java** filelocated in the following folder: **src\uk\ac\nott\cs\g53dia\Simulator**
+- To measure the agent performance over 10 runs, run the **Evaluator.java** filelocated in the following folder: **src\uk\ac\nott\cs\g53dia\Simulator**
 
 <br>
 
