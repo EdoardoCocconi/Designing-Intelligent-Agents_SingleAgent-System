@@ -1,5 +1,7 @@
 ![Nottingham University](Assets/University.png)
 
+<br>
+
 # Designing Intelligent Agents: Single Agent System
 
 <br>
