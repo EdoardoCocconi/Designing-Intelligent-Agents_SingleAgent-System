@@ -63,7 +63,7 @@ The sense method runs at every timestep inside senseAndAct and selects a Behavio
 
 <br>
 
-## Why the hierarchy is appropriate for the project
+## Why the agent architecture is appropriate for the project
 
 The chosen hierarchy is a successful representation of the priorities of the agent. In order: the agent preserves itself, completes tasks, disposes the litter once enough tasks have been completed, and moves if there is nothing to do in the current area.
 
