@@ -16,7 +16,7 @@
 
 - The source code of the **environment** in which the agent operates can be found in the [library package](src/uk/ac/nott/cs/g53dia/library)
 
-- To see the agent in action, run the [Simulator.java](src/uk/ac/nott/cs/g53dia/simulator/Simulator.jpg)
+- To see the agent in action, run the [Simulator.java](src/uk/ac/nott/cs/g53dia/simulator/Simulator.java)
 
 - To measure the agent performance over 10 runs, run the [Evaluator.java](src/uk/ac/nott/cs/g53dia/simulator/Evaluator.java)
 
