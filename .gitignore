@@ -1,0 +1,13 @@
+.idea/
+bin
+doc
+.classpath
+.project
+dosmake.bat
+G53DIA.jar
+G53DIA Litter Agent.iml
+license.terms
+Makefile
+README
+.DS_Store
+.settings
