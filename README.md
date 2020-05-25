@@ -6,6 +6,12 @@
 
 <br>
 
+<p align="center">
+  
+  <img width="504" src="Assets/SingleAgent3.gif">
+
+<p>
+
 ## Getting Started
 
 - The java source code of the **agent** can be found [here](src/uk/ac/nott/cs/g53dia/agent/DemoLitterAgent.java).
