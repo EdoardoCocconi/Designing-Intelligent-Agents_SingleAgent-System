@@ -24,6 +24,8 @@
 
 ## Environment
 
+<div style="text-align: justify">
+
 The problem consists of a 2D environment, in which an agent must transport waste and recycling from bins to stations. The goal of the agent is to transport as much waste and recycling as possible in a fixed period of time.
 
 - the environment is an infinite 2D grid that contains randomly distributed recycling and waste bins, waste and recycling stations, and recharging points
@@ -42,6 +44,8 @@ recycling it must be taken to a recycling station before waste is loaded
 - the agent starts out at a recharging point with 500 units of battery and no recycling or waste
 - a run lasts 10,000 timesteps unless the agent runs out of battery, in which case the run is terminated
 - the success (score) of the agent is determined by the total amount of recycling and waste collected
+
+</div>
 
 <br>
 
