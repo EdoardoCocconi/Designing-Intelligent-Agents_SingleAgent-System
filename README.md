@@ -2,7 +2,7 @@
 
 <br>
 
-<p align="center">
+<p align="center"><b><i>Pure Pursuit Algorithm.<i><b></p>
   
   The java source code of the **agent**
 
