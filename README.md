@@ -2,6 +2,14 @@
 
 <br>
 
+<p align="center">
+<ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+</p>
+
 # Designing Intelligent Agents: Single Agent System
 
 <br>
