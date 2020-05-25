@@ -4,7 +4,7 @@
 
 <p align="justify">
   Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.vPure Pursuit Algorithm.
-</p>
+
 
 # Designing Intelligent Agents: Single Agent System
 
@@ -136,5 +136,7 @@ Agent's average score over 10 runs: 3.643E04
 
 <br>
 <br>
+
+</p>
 
 > *©  2019  Edoardo  M.  Cocconi  All  Rights  Reserved*
