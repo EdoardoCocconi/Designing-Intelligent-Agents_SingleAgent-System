@@ -2,7 +2,9 @@
 
 <br>
 
-<p align="justify">Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.vPure Pursuit Algorithm.</p>
+<p align="justify">
+  Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.Pure Pursuit Algorithm.vPure Pursuit Algorithm.
+</p>
 
 # Designing Intelligent Agents: Single Agent System
 
