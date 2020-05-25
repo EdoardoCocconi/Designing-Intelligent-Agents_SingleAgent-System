@@ -108,7 +108,7 @@ This is implemented in the ExploreBehaviour class.
 
 ## Choosing the bin
 
-<p style="text-align: justify;">
+<p align=" justify">
 
 The agent finds the task with the highest litter over distance ratio in the specified field of view. The field of view is inversely proportional to the current litter capacity of the agent. If the agent is 90% full, the field of view is reduced by 90%. Therefore, the agent won’t look for high value tasks that are far away because the agent could not complete them anyways. Instead, the agent prefers to go to the tasks close to it that can be completed before going to the station. 
 
