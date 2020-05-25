@@ -102,11 +102,13 @@ This is implemented in the isRechargeInRange method in the RechargeDetector clas
 
 ## Explore
 
-The initial intention of the project was to explore the environment first, so more tasks start spawning, and the agent can record the position of the bins. The agent would have moved inside the explored environment where the probability of a task being present is higher. However, this initial exploration either produces an environment that is too small or wastes to many timesteps.
-
-In the final version of the project, the exploration is only triggered when there is nothing else to do. During the exploration, the agent moves away from the origin if its distance from the origin is less than 30, and it gets closer to the origin when it is greater or equal to 30. The areas close to the origin have a higher probability to be already explored and therefore have a higher probability to contain more tasks over time.
-
-This is implemented in the ExploreBehaviour class.
+<p align="justify">
+  The initial intention of the project was to explore the environment first, so more tasks start spawning, and the agent can record the position of the bins. The agent would have moved inside the explored environment where the probability of a task being present is higher. However, this initial exploration either produces an environment that is too small or wastes to many timesteps.
+  <br><br>
+  In the final version of the project, the exploration is only triggered when there is nothing else to do. During the exploration, the agent moves away from the origin if its distance from the origin is less than 30, and it gets closer to the origin when it is greater or equal to 30. The areas close to the origin have a higher probability to be already explored and therefore have a higher probability to contain more tasks over time.
+  <br><br>
+  This is implemented in the ExploreBehaviour class.
+</p>
 
 <br>
 
@@ -117,10 +119,6 @@ This is implemented in the ExploreBehaviour class.
   <br><br>
   The bin with the highest litter over distance ratio is found by the readSensor method of the LitterDetector class. The readSensor       method is called in the sense method in DemoLitterAgent. When the field of view is so small that the agent does not see any task, or   when the agent is full, the CollectBehaviour does not run anymore.
 </p>
-
-The agent finds the task with the highest litter over distance ratio in the specified field of view. The field of view is inversely    proportional to the current litter capacity of the agent. If the agent is 90% full, the field of view is reduced by 90%. Therefore,     the agent won’t look for high value tasks that are far away because the agent could not complete them anyways. Instead, the agent       prefers to go to the tasks close to it that can be completed before going to the station. 
-
-The bin with the highest litter over distance ratio is found by the readSensor method of the LitterDetector class. The readSensor       method is called in the sense method in DemoLitterAgent. When the field of view is so small that the agent does not see any task, or   when the agent is full, the CollectBehaviour does not run anymore.
 
 <br>
 
