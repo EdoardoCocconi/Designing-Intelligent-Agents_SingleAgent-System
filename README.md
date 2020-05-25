@@ -2,13 +2,13 @@
 
 <br>
 
-<p align="center">
+<div align="center">
   <ul>
     <li>Coffee</li>
     <li>Tea</li>
     <li>Milk</li>
   </ul>
-</p>
+</div>
 
 # Designing Intelligent Agents: Single Agent System
 
