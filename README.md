@@ -8,6 +8,7 @@
 
 ## Getting Started
 
+<p align="justify">
 <ul>
   <li>The java source code of the **agent** can be found [here](src/uk/ac/nott/cs/g53dia/agent/DemoLitterAgent.java).</li>
   <li>The **java classes** programmed for the functioning of the **agent** can be found in the [agent package](src/uk/ac/nott/cs/g53dia/agent).</li>
@@ -16,6 +17,7 @@
   <li>To see the agent in action, run the [Simulator.java](src/uk/ac/nott/cs/g53dia/simulator/Simulator.java)</li>
   <li>To measure the agent performance over 10 runs, run the [Evaluator.java](src/uk/ac/nott/cs/g53dia/simulator/Evaluator.java)</li>
 </ul>
+</p>
 
 <br>
 
