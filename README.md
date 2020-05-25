@@ -8,7 +8,7 @@
 
 <p align="center">
   
-  <img width="504" src="Assets/SingleAgent3.gif">
+  <img src="Assets/SingleAgent3.gif">
 
 <p>
 
