@@ -3,10 +3,6 @@
 <br>
 
 <p align="center"><b><i>Pure Pursuit Algorithm.<i><b></p>
-  
-  The java source code of the **agent**
-
-<p>
 
 # Designing Intelligent Agents: Single Agent System
 
