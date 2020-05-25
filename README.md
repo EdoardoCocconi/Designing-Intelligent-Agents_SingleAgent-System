@@ -2,6 +2,8 @@
 
 <br>
 
+<div style="text-align: justify">
+
 # Designing Intelligent Agents: Single Agent System
 
 <br>
@@ -23,8 +25,6 @@
 <br>
 
 ## Environment
-
-<div style="text-align: justify">
 
 The problem consists of a 2D environment, in which an agent must transport waste and recycling from bins to stations. The goal of the agent is to transport as much waste and recycling as possible in a fixed period of time.
 
@@ -136,3 +136,5 @@ Agent's average score over 10 runs: 3.643E04
 <br>
 
 > *©  2019  Edoardo  M.  Cocconi  All  Rights  Reserved*
+
+</div>
