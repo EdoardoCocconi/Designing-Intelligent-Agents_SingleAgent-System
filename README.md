@@ -161,6 +161,16 @@
 
 <br>
 
+<div align="center">
+  <img src="Assets/Score.png" alt="Trulli">
+</div>
+
+<br>
+
+<p align="center">
+  <b><i>Single Agent Simulation Output.</i></b>
+</p>
+
 ![Score Screenshot](Assets/Score.jpg)
 
 <br>
