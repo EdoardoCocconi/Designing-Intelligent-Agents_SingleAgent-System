@@ -162,7 +162,7 @@
 <br>
 
 <div align="center">
-  <img src="Assets/Score.png" alt="Score Screenshot">
+  <img src="Assets/Score.jpg" alt="Score Screenshot">
 </div>
 
 <br>
