@@ -89,54 +89,61 @@
   <br><br>
   This approach has the additional advantage that after some updates it can become the perfect starting point to implement multiple agents in the next project, which will be more computationally expensive.
   <br>
-  As will be explained in the "Chosing the bin" section of the README the agent is likely to complete a cluster of tasks before moving to the next cluster. If every high value task was surrounded by many low value tasks, the agent would not understand that it has to change cluster if the latter is too far away. Also, the agent exploits the fact that points are awarded only at task completion. If points were awarded for partial completion, the agent would have to be changed so it does not avoid partial completion.
+  As will be explained in the "Chosing the bin" section of this README the agent is likely to complete a cluster of tasks before moving to the next cluster. If every high value task was surrounded by many low value tasks, the agent would not understand that it has to change cluster if the latter is too far away. Also, the agent exploits the fact that points are awarded only at task completion. If points were awarded for partial completion, the agent would have to be changed so it does not avoid partial completion.
 </div>
 
 <br>
 
 ## Mapping
 
-The agent does have an internal representation of the environment. The class that manages this internal representation is ExploredMap. The method updateMap adds the current view to a hash map with Point as key and Cell as value. This allows to add new tasks and unexplored regions to the map. updateMap is called at every timestep inside the senseAndAct method. The map allows the agent to know the location of the nearest explored recharge station at all times, even if it is outside its field of view. In the next project it might be used to communicate to other agents the location of clusters of tasks.
+<div align="justify">
+  The agent does have an internal representation of the environment. The class that manages this internal representation is ExploredMap. The method updateMap adds the current view to a hash map with Point as key and Cell as value. This allows to add new tasks and unexplored regions to the map. updateMap is called at every timestep inside the senseAndAct method. The map allows the agent to know the location of the nearest explored recharge station at all times, even if it is outside its field of view. In the next project it might be used to communicate to other agents the location of clusters of tasks.
+</div>
 
 <br>
 
 ## Recharge
 
-- The agent immediately goes to recharge if moving by one more cell would make it impossible to reach the closest recharge point known to the agent.
--	The agent immediately goes to recharge if the battery is between 90% and 50% and the distance to the recharge station is 3 or less than 3.
--	The agent immediately goes to recharge if the battery is below 50% and the distance to the recharge station is 4 or less than 4. The battery will never arrive to 0% due to the first condition.
-
-The agent does not recharge if the battery can last until the end of the simulation without doing so. This allows to maximize the total number of points.
-
-This is implemented in the isRechargeInRange method in the RechargeDetector class. The method outputs TRUE if a RechargeStation is present in the respective radius.
+<div align="justify">
+  <ul>
+    <li>The agent immediately goes to recharge if moving by one more cell would make it impossible to reach the closest recharge point known to the agent.</li>
+    <li>The agent immediately goes to recharge if the battery is between 90% and 50% and the distance to the recharge station is 3 or less than 3.</li>
+    <li>The agent immediately goes to recharge if the battery is below 50% and the distance to the recharge station is 4 or less than 4. The battery will never arrive to 0% due to the first condition.</li>
+  <br><br>
+  The agent does not recharge if the battery can last until the end of the simulation without doing so. This allows to maximize the total number of points.
+  <br><br>
+  This is implemented in the isRechargeInRange method in the RechargeDetector class. The method outputs TRUE if a RechargeStation is present in the respective radius.
+</div>
 
 <br>
 
 ## Explore
 
-<p align="justify">
+<div align="justify">
   The initial intention of the project was to explore the environment first, so more tasks start spawning, and the agent can record the position of the bins. The agent would have moved inside the explored environment where the probability of a task being present is higher. However, this initial exploration either produces an environment that is too small or wastes to many timesteps.
   <br><br>
   In the final version of the project, the exploration is only triggered when there is nothing else to do. During the exploration, the agent moves away from the origin if its distance from the origin is less than 30, and it gets closer to the origin when it is greater or equal to 30. The areas close to the origin have a higher probability to be already explored and therefore have a higher probability to contain more tasks over time.
   <br><br>
   This is implemented in the ExploreBehaviour class.
-</p>
+</div>
 
 <br>
 
 ## Choosing the bin
 
-<p align="justify">
+<div align="justify">
   The agent finds the task with the highest litter over distance ratio in the specified field of view. The field of view is inversely    proportional to the current litter capacity of the agent. If the agent is 90% full, the field of view is reduced by 90%. Therefore,     the agent won’t look for high value tasks that are far away because the agent could not complete them anyways. Instead, the agent       prefers to go to the tasks close to it that can be completed before going to the station.
   <br><br>
   The bin with the highest litter over distance ratio is found by the readSensor method of the LitterDetector class. The readSensor       method is called in the sense method in DemoLitterAgent. When the field of view is so small that the agent does not see any task, or   when the agent is full, the CollectBehaviour does not run anymore.
-</p>
+</div>
 
 <br>
 
 ## Chosing the station
 
-The agent goes to the closest station. This allows it to complete the current cluster of tasks before going to the next one. This is implemented in the readSensor method in the StationDetector class.
+<div align="justify">
+  The agent goes to the closest station. This allows it to complete the current cluster of tasks before going to the next one. This is implemented in the readSensor method in the StationDetector class.
+</div>
 
 <br>
 
