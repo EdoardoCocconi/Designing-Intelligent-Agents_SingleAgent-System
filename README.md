@@ -34,7 +34,8 @@
   The problem consists of a 2D environment, in which an agent must transport waste and recycling from bins to stations. The goal of the agent is to transport as much waste and recycling as possible in a fixed period of time.
   <br><br>
   <ul>
-    <li>the environment is an infinite 2D grid that contains randomly distributed recycling and waste bins, waste and recycling stations, and recharging points</li>the environment is an infinite 2D grid that contains randomly distributed recycling and waste bins, waste and recycling stations, and recharging points
+    <li>the environment is an infinite 2D grid that contains randomly distributed recycling and waste bins, waste and recycling stations, and recharging points</li>
+    the environment is an infinite 2D grid that contains randomly distributed recycling and waste bins, waste and recycling stations, and recharging points
     <li>bins periodically generate tasks to transport a specified amount of recycling or waste (max 100 litres)</li>
     <li>tasks persist until they are achieved (a bin has at most one task at any time)</li>
     <li>recycling and waste stations can accept an infinite amount of recycling and waste respectively</li>
