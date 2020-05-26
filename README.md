@@ -28,24 +28,13 @@
     <br>
     <li>An improved version of this agent will interact with other agents in the <a href="https://github.com/EdoardoCocconi/Designing-Intelligent-Agents_MultiAgent-System">Multi-Agent Project</a>.</li>
     <br>
-    <li>The source code of the **environment** in which the agent operates can be found in the <a href="src/uk/ac/nott/cs/g53dia/library">library package</a>.</li>
+    <li>The source code of the <b>environment</b> in which the agent operates can be found in the <a href="src/uk/ac/nott/cs/g53dia/library">library package</a>.</li>
     <br><br>
-    <li></li>
+    <li>To see the agent in action, run the <a href="src/uk/ac/nott/cs/g53dia/simulator/Simulator.java">Simulator.java</a>.</li>
     <br><br>
-    <li></li>
+    <li>To measure the agent performance over 10 runs, run the <a href="src/uk/ac/nott/cs/g53dia/simulator/Evaluator.java">Evaluator.java</a>.</li>
   </ul>
 </div>
-
-
-- 
-
-- 
-
-- 
-
-- To see the agent in action, run the [Simulator.java](src/uk/ac/nott/cs/g53dia/simulator/Simulator.java).
-
-- To measure the agent performance over 10 runs, run the [Evaluator.java](src/uk/ac/nott/cs/g53dia/simulator/Evaluator.java).
 
 <br>
 
