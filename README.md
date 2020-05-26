@@ -20,7 +20,10 @@
 
 ## Getting Started
 
-- The java source code of the **agent** can be found [here](src/uk/ac/nott/cs/g53dia/agent/DemoLitterAgent.java).
+The java source code of the **agent** can be found <a href="src/uk/ac/nott/cs/g53dia/agent/DemoLitterAgent.java">here</a>
+
+
+[here](src/uk/ac/nott/cs/g53dia/agent/DemoLitterAgent.java).
 
 - The **java classes** programmed for the functioning of the **agent** can be found in the [agent package](src/uk/ac/nott/cs/g53dia/agent).
 
