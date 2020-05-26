@@ -23,11 +23,11 @@
 <div align="justify">
   <ul>
     <li>The java source code of the <b>agent</b> can be found <a href="src/uk/ac/nott/cs/g53dia/agent/DemoLitterAgent.java">here</a>.</li>
-    <br><br>
+    <br>
     <li>The <b>java classes</b> programmed for the functioning of the <b>agent</b> can be found in the <a href="src/uk/ac/nott/cs/g53dia/agent">agent package</a></li>
-    <br><br>
+    <br>
     <li>An improved version of this agent will interact with other agents in the <a href="https://github.com/EdoardoCocconi/Designing-Intelligent-Agents_MultiAgent-System">Multi-Agent Project</a>.</li>
-    <br><br>
+    <br>
     <li>The source code of the **environment** in which the agent operates can be found in the <a href="src/uk/ac/nott/cs/g53dia/library">library package</a>.</li>
     <br><br>
     <li></li>
