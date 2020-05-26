@@ -30,26 +30,27 @@
 
 ## Environment
 
-The problem consists of a 2D environment, in which an agent must transport waste and recycling from bins to stations. The goal of the agent is to transport as much waste and recycling as possible in a fixed period of time.
-
-- the environment is an infinite 2D grid that contains randomly distributed recycling and waste bins, waste and recycling stations, and recharging points
-- bins periodically generate tasks to transport a specified amount of recycling or waste (max 100 litres)
-- tasks persist until they are achieved (a bin has at most one task at any time)
-- recycling and waste stations can accept an infinite amount of recycling and waste respectively
-- the agent can recharge at a recharging point
-- the agent's battery capacity is 500
-- the agent can carry 200 litres of recycling or waste at a time
-- recycling and waste must not be mixed – if the agent has loaded waste it must be taken to a waste station before it collects recycling, and if it has loaded
-recycling it must be taken to a recycling station before waste is loaded
-- the agent can see any bins, stations and recharging points within 30 cells of its current position
-- if a bin is visible, the agent can see if it has a task, and if so, how much recycling or waste is to be disposed of
-- move actions take one timestep and consume 1 unit of battery
-- collecting recycling and waste from a bin and unloading recycling and waste at a station takes one timestep (and consumes no battery)
-- the agent starts out at a recharging point with 500 units of battery and no recycling or waste
-- a run lasts 10,000 timesteps unless the agent runs out of battery, in which case the run is terminated
-- the success (score) of the agent is determined by the total amount of recycling and waste collected
-
-</div>
+<p align="justify">
+  The problem consists of a 2D environment, in which an agent must transport waste and recycling from bins to stations. The goal of the agent is to transport as much waste and recycling as possible in a fixed period of time.
+  <br><br>
+  <ul>
+    <li>the environment is an infinite 2D grid that contains randomly distributed recycling and waste bins, waste and recycling stations, and recharging points</li>the environment is an infinite 2D grid that contains randomly distributed recycling and waste bins, waste and recycling stations, and recharging points
+    <li>bins periodically generate tasks to transport a specified amount of recycling or waste (max 100 litres)</li>
+    <li>tasks persist until they are achieved (a bin has at most one task at any time)</li>
+    <li>recycling and waste stations can accept an infinite amount of recycling and waste respectively</li>
+    <li>the agent can recharge at a recharging point</li>
+    <li>the agent's battery capacity is 500</li>
+    <li>recycling and waste must not be mixed – if the agent has loaded waste it must be taken to a waste station before it collects recycling, and if it has loaded</li>
+    <li>recycling must be taken to a recycling station before waste is loaded</li>
+    <li>the agent can see any bins, stations and recharging points within 30 cells of its current position</li>
+    <li>if a bin is visible, the agent can see if it has a task, and if so, how much recycling or waste is to be disposed of</li>
+    <li>move actions take one timestep and consume 1 unit of battery</li>
+    <li>collecting recycling and waste from a bin and unloading recycling and waste at a station takes one timestep (and consumes no battery)</li>
+    <li>the agent starts out at a recharging point with 500 units of battery and no recycling or waste</li>
+    <li>a run lasts 10,000 timesteps unless the agent runs out of battery, in which case the run is terminated</li>
+    <li>the success (score) of the agent is determined by the total amount of recycling and waste collected</li>
+  </ul>
+</p>
 
 <br>
 
