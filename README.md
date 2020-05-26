@@ -7,7 +7,7 @@
 <br>
 
 <div align="center">
-  <img src="Assets/SingleAgent3.gif">
+  <img src="Assets/SingleAgent3.gif" alt="Agetn Animation">
 </div>
 
 <br>
@@ -162,20 +162,14 @@
 <br>
 
 <div align="center">
-  <img src="Assets/Score.png" alt="Trulli">
+  <img src="Assets/Score.png" alt="Score Screenshot">
 </div>
 
 <br>
 
 <p align="center">
-  <b><i>Single Agent Simulation Output.</i></b>
+  <b><i>Agent's average score over 10 runs: 3.643E04</i></b>
 </p>
-
-![Score Screenshot](Assets/Score.jpg)
-
-<br>
-
-Agent's average score over 10 runs: 3.643E04
 
 <br>
 <br>
