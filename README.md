@@ -47,9 +47,9 @@
     <li>If a bin is visible, the agent can see if it has a task, and if so, how much recycling or waste is to be disposed of.</li>
     <li>Move actions take one timestep and consume 1 unit of battery.</li>
     <li>Collecting recycling and waste from a bin and unloading recycling and waste at a station takes one timestep (and consumes no battery).</li>
-    <li>the agent starts out at a recharging point with 500 units of battery and no recycling or waste.</li>
-    <li>a run lasts 10,000 timesteps unless the agent runs out of battery, in which case the run is terminated.</li>
-    <li>the success (score) of the agent is determined by the total amount of recycling and waste collected.</li>
+    <li>The agent starts out at a recharging point with 500 units of battery and no recycling or waste.</li>
+    <li>A run lasts 10,000 timesteps unless the agent runs out of battery, in which case the run is terminated.</li>
+    <li>The success (score) of the agent is determined by the total amount of recycling and waste collected.</li>
   </ul>
 </div>
 
@@ -57,21 +57,26 @@
 
 ## Architecture
 
-The agent has a reactive architecture with hierarchical control. The hierarchy is implemented in the Sense method of DemoLitterAgent as a series of if-conditions. The higher the priority the earlier the condition is checked. If a condition is met, the corresponding behavior is triggered. The behaviors are listed here from highest priority to lowest priority:
-
--	**RechargeBehaviour:** if the agent is on the target RechargeStation perform a RechargeAction, otherwise MoveTowards RechargeStation.
--	**CollectBehaviour:** if the agent is on the target LitterBin perform a LoadAction, otherwise MoveTowards LitterBin.
--	**DisposeBehaviour:** if the agent is on the target Station perform a DisposeAction, otherwise MoveTowards Station.
--	**ExploreBehaviour:**
-If the agent is at distance <= 30 from the origin get away from the origin, else MoveTowards origin.
-
-The Sense method receives percepts from 3 Sensors:
-
--	**RechargeDetector:** detects recharge stations inside a radius that is related to how much battery the agent has already lost. If there are recharge stations in this radius, RechargeBehaviour is triggered.
--	**LitterDetector:** detects the bin with the highest litter over distance ratio within the specified field of view.
--	**StationDetector:** detects the closest station.
-
-The sense method runs at every timestep inside senseAndAct and selects a Behaviour. If nothing is detected, the ExploreBehaviour is selected. The selected behaviors is carried out by the Act method inside senseAndAct.
+<div align="justify">
+  The agent has a reactive architecture with hierarchical control. The hierarchy is implemented in the Sense method of DemoLitterAgent as a series of if-conditions. The higher the priority the earlier the condition is checked. If a condition is met, the corresponding behavior is triggered. The behaviors are listed here from highest priority to lowest priority:
+  <br><br>
+  <ul>
+    <li>**RechargeBehaviour:** if the agent is on the target RechargeStation perform a RechargeAction, otherwise MoveTowards RechargeStation.</li>
+    <li>**CollectBehaviour:** if the agent is on the target LitterBin perform a LoadAction, otherwise MoveTowards LitterBin.</li>
+    <li>**DisposeBehaviour:** if the agent is on the target Station perform a DisposeAction, otherwise MoveTowards Station.</li>
+    <li>**ExploreBehaviour:** If the agent is at distance <= 30 from the origin get away from the origin, else MoveTowards origin.</li>
+  </ul>
+  <br><br>
+  The Sense method receives percepts from 3 Sensors:
+  <br><br>
+  <ul>
+    <li>**RechargeDetector:** detects recharge stations inside a radius that is related to how much battery the agent has already lost. If there are recharge stations in this radius, RechargeBehaviour is triggered.</li>
+    <li>**LitterDetector:** detects the bin with the highest litter over distance ratio within the specified field of view.</li>
+    <li>**StationDetector:** detects the closest station.</li>
+  </ul>
+  <br><br>
+  The sense method runs at every timestep inside senseAndAct and selects a Behaviour. If nothing is detected, the ExploreBehaviour is selected. The selected behaviors is carried out by the Act method inside senseAndAct.
+</div>
 
 <br>
 
