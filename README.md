@@ -6,11 +6,16 @@
 
 <br>
 
-<p align="center">
-  
+<div align="center">
   <img src="Assets/SingleAgent3.gif">
+</div>
 
-<p>
+
+<p align="center">
+  <b><i>Single Agent Simulation Output.<i><b>
+</p>
+
+
 
 ## Getting Started
 
