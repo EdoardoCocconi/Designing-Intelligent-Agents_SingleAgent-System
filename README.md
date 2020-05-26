@@ -13,7 +13,7 @@
 <br>
 
 <p align="center">
-  <b><i>Single Agent Simulation Output.<i><b>
+  <b><i>Single Agent Simulation Output.</i></b>
 </p>
 
 <br>
