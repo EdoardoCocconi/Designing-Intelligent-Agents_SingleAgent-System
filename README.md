@@ -10,6 +10,7 @@
   <img src="Assets/SingleAgent3.gif">
 </div>
 
+<br>
 
 <p align="center">
   <b><i>Single Agent Simulation Output.<i><b>
