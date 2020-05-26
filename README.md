@@ -30,7 +30,7 @@
 
 ## Environment
 
-<p align="justify">
+<div align="justify">
   The problem consists of a 2D environment, in which an agent must transport waste and recycling from bins to stations. The goal of the agent is to transport as much waste and recycling as possible in a fixed period of time.
   <br><br>
   <ul>
@@ -50,7 +50,7 @@
     <li>a run lasts 10,000 timesteps unless the agent runs out of battery, in which case the run is terminated</li>
     <li>the success (score) of the agent is determined by the total amount of recycling and waste collected</li>
   </ul>
-</p>
+</div>
 
 <br>
 
