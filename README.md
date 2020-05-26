@@ -20,16 +20,28 @@
 
 ## Getting Started
 
-The java source code of the **agent** can be found <a href="src/uk/ac/nott/cs/g53dia/agent/DemoLitterAgent.java">here</a>
+<div align="justify">
+  <ul>
+    <li>The java source code of the <b>agent</b> can be found <a href="src/uk/ac/nott/cs/g53dia/agent/DemoLitterAgent.java">here</a>.</li>
+    <br><br>
+    <li>The <b>java classes</b> programmed for the functioning of the <b>agent</b> can be found in the <a href="src/uk/ac/nott/cs/g53dia/agent">agent package</a></li>
+    <br><br>
+    <li>An improved version of this agent will interact with other agents in the <a href="https://github.com/EdoardoCocconi/Designing-Intelligent-Agents_MultiAgent-System">Multi-Agent Project</a>.</li>
+    <br><br>
+    <li>The source code of the **environment** in which the agent operates can be found in the <a href="src/uk/ac/nott/cs/g53dia/library">library package</a>.</li>
+    <br><br>
+    <li></li>
+    <br><br>
+    <li></li>
+  </ul>
+</div>
 
 
-[here](src/uk/ac/nott/cs/g53dia/agent/DemoLitterAgent.java).
+- 
 
-- The **java classes** programmed for the functioning of the **agent** can be found in the [agent package](src/uk/ac/nott/cs/g53dia/agent).
+- 
 
-- An improved version of this agent will interact with other agents in the [Multi-Agent Project](https://github.com/EdoardoCocconi/Designing-Intelligent-Agents_MultiAgent-System).
-
-- The source code of the **environment** in which the agent operates can be found in the [library package](src/uk/ac/nott/cs/g53dia/library).
+- 
 
 - To see the agent in action, run the [Simulator.java](src/uk/ac/nott/cs/g53dia/simulator/Simulator.java).
 
