@@ -164,6 +164,7 @@
 </div>
 
 <br>
+<br>
 
 <div align="center">
   <img src="Assets/Score.jpg" alt="Score Screenshot">
