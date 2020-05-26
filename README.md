@@ -159,7 +159,9 @@
 
 ## Performance
 
-The performance of the agent is measured in liters of litter collected during the 10000 timesteps simulation. As long as the environment is not changed, this measure can be used as a benchmark for future improvements.
+<div align="justify">
+  The performance of the agent is measured in liters of litter collected during the 10000 timesteps simulation. As long as the environment is not changed, this measure can be used as a benchmark for future improvements.
+</div>
 
 <br>
 
