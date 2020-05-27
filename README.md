@@ -7,7 +7,7 @@
 <br>
 
 <div align="center">
-  <img src="Assets/SingleAgent3.gif" alt="Agetn Animation">
+  <img src="Assets/SingleAgent3.gif" alt="Agent Animation">
 </div>
 
 <br>
@@ -18,15 +18,21 @@
 
 <br>
 
+<div align="justify">
+  The problem consists of a 2D environment, in which an agent must transport waste and recycling from bins to stations. The goal of the agent is to transport as much waste and recycling as possible in a fixed period of time.
+</div>
+
+<br>
+
 ## Getting Started
 
 <div align="justify">
   <ul>
     <li>The java source code of the <b>agent</b> can be found <a href="src/uk/ac/nott/cs/g53dia/agent/DemoLitterAgent.java">here</a>.</li>
     <br>
-    <li>The <b>java classes</b> programmed for the functioning of the <b>agent</b> can be found in the <a href="src/uk/ac/nott/cs/g53dia/agent">agent package</a></li>
+    <li>The <b>java classes</b> programmed for the functioning of the <b>agent</b> can be found in the <a href="src/uk/ac/nott/cs/g53dia/agent">agent package</a>.</li>
     <br>
-    <li>An improved version of this agent will interact with other agents in the <a href="https://github.com/EdoardoCocconi/Designing-Intelligent-Agents_MultiAgent-System">Multi-Agent Project</a>.</li>
+    <li>An improved version of this agent will interact with other agents in the <a href="https://github.com/EdoardoCocconi/Intelligent-MultiAgent-System">Multi-Agent Project</a>.</li>
     <br>
     <li>The source code of the <b>environment</b> in which the agent operates can be found in the <a href="src/uk/ac/nott/cs/g53dia/library">library package</a>.</li>
     <br>
@@ -41,8 +47,6 @@
 ## Environment
 
 <div align="justify">
-  The problem consists of a 2D environment, in which an agent must transport waste and recycling from bins to stations. The goal of the agent is to transport as much waste and recycling as possible in a fixed period of time.
-  <br><br>
   <ul>
     <li>The environment is an infinite 2D grid that contains randomly distributed recycling and waste bins, waste and recycling stations, and recharging points.</li>
     <li>The environment is an infinite 2D grid that contains randomly distributed recycling and waste bins, waste and recycling stations, and recharging points.</li>
@@ -119,7 +123,8 @@
     <li>The agent immediately goes to recharge if moving by one more cell would make it impossible to reach the closest recharge point known to the agent.</li>
     <li>The agent immediately goes to recharge if the battery is between 90% and 50% and the distance to the recharge station is 3 or less than 3.</li>
     <li>The agent immediately goes to recharge if the battery is below 50% and the distance to the recharge station is 4 or less than 4. The battery will never arrive to 0% due to the first condition.</li>
-  <br><br>
+  </ul>
+  <br>
   The agent does not recharge if the battery can last until the end of the simulation without doing so. This allows to maximize the total number of points.
   <br><br>
   This is implemented in the isRechargeInRange method in the RechargeDetector class. The method outputs TRUE if a RechargeStation is present in the respective radius.
